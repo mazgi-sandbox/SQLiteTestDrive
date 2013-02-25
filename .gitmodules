@@ -1,0 +1,3 @@
+[submodule "FMDB"]
+	path = FMDB
+	url = git@github.com:mazgi/fmdb.git
