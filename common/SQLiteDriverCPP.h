@@ -10,5 +10,11 @@
 #define __SQLite3Driver4iOS__SQLiteDriverCPP__
 
 #include <iostream>
+#include "sqlite3.h"
+
+class SQLiteDriverCPP {
+public:
+    void run();
+};
 
 #endif /* defined(__SQLite3Driver4iOS__SQLiteDriverCPP__) */
