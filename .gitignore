@@ -7,3 +7,14 @@
 **/*.xcodeproj/*
 !**/*.xcodeproj/project.pbxproj
 !**/*.xcodeproj/default.*
+#--------
+# eclipse workspace
+.metadata/*
+!.metadata/version.ini
+!.metadata/.mylyn/
+#--------
+# eclipse projects
+.classpath
+bin/
+gen/
+obj/
