@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB4EE28716DCAEFB00C17774 /* SQLiteDriverCPP.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EB4EE28516DCAEFB00C17774 /* SQLiteDriverCPP.cpp */; };
 		EBF65D1C16C2AE5B0067C941 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF65D1B16C2AE5B0067C941 /* UIKit.framework */; };
 		EBF65D1E16C2AE5B0067C941 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF65D1D16C2AE5B0067C941 /* Foundation.framework */; };
 		EBF65D2016C2AE5B0067C941 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF65D1F16C2AE5B0067C941 /* CoreGraphics.framework */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB4EE28516DCAEFB00C17774 /* SQLiteDriverCPP.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = SQLiteDriverCPP.cpp; path = ../common/SQLiteDriverCPP.cpp; sourceTree = "<group>"; };
+		EB4EE28616DCAEFB00C17774 /* SQLiteDriverCPP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SQLiteDriverCPP.h; path = ../common/SQLiteDriverCPP.h; sourceTree = "<group>"; };
 		EBF65D1816C2AE5B0067C941 /* SQLite3Driver4iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SQLite3Driver4iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBF65D1B16C2AE5B0067C941 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EBF65D1D16C2AE5B0067C941 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -59,9 +62,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EB4EE28416DCAEE600C17774 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				EB4EE28616DCAEFB00C17774 /* SQLiteDriverCPP.h */,
+				EB4EE28516DCAEFB00C17774 /* SQLiteDriverCPP.cpp */,
+			);
+			name = common;
+			sourceTree = "<group>";
+		};
 		EBF65D0F16C2AE5B0067C941 = {
 			isa = PBXGroup;
 			children = (
+				EB4EE28416DCAEE600C17774 /* common */,
 				EBF65D2116C2AE5B0067C941 /* SQLite3Driver4iOS */,
 				EBF65D1A16C2AE5B0067C941 /* Frameworks */,
 				EBF65D1916C2AE5B0067C941 /* Products */,
@@ -186,6 +199,7 @@
 				EBF65D2C16C2AE5B0067C941 /* AppDelegate.m in Sources */,
 				EBF65D3B16C2B7710067C941 /* FirstViewController.m in Sources */,
 				EBF65D3F16C2B7980067C941 /* SQLiteDriver.m in Sources */,
+				EB4EE28716DCAEFB00C17774 /* SQLiteDriverCPP.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,6 +314,7 @@
 				EBF65D3716C2AE5B0067C941 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
