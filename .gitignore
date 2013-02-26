@@ -15,5 +15,5 @@
 #--------
 # eclipse projects
 .classpath
-bin/*
-gen/*
+bin/
+gen/
