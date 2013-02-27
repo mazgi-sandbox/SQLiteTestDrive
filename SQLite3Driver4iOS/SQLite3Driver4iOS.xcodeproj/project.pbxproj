@@ -17,7 +17,7 @@
 		EBF65D2E16C2AE5B0067C941 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF65D2D16C2AE5B0067C941 /* Default.png */; };
 		EBF65D3016C2AE5B0067C941 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF65D2F16C2AE5B0067C941 /* Default@2x.png */; };
 		EBF65D3216C2AE5B0067C941 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EBF65D3116C2AE5B0067C941 /* Default-568h@2x.png */; };
-		EBF65D3B16C2B7710067C941 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF65D3916C2B7710067C941 /* FirstViewController.m */; };
+		EBF65D3B16C2B7710067C941 /* FirstViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = EBF65D3916C2B7710067C941 /* FirstViewController.mm */; };
 		EBF65D3C16C2B7710067C941 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBF65D3A16C2B7710067C941 /* FirstViewController.xib */; };
 		EBF65D3F16C2B7980067C941 /* SQLiteDriver.m in Sources */ = {isa = PBXBuildFile; fileRef = EBF65D3E16C2B7980067C941 /* SQLiteDriver.m */; };
 		EBF65D4116C2B7B80067C941 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF65D4016C2B7B80067C941 /* libsqlite3.dylib */; };
@@ -40,7 +40,7 @@
 		EBF65D2F16C2AE5B0067C941 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		EBF65D3116C2AE5B0067C941 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		EBF65D3816C2B7710067C941 /* FirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		EBF65D3916C2B7710067C941 /* FirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		EBF65D3916C2B7710067C941 /* FirstViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = FirstViewController.mm; sourceTree = "<group>"; };
 		EBF65D3A16C2B7710067C941 /* FirstViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
 		EBF65D3D16C2B7980067C941 /* SQLiteDriver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteDriver.h; sourceTree = "<group>"; };
 		EBF65D3E16C2B7980067C941 /* SQLiteDriver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteDriver.m; sourceTree = "<group>"; };
@@ -109,7 +109,7 @@
 				EBF65D3D16C2B7980067C941 /* SQLiteDriver.h */,
 				EBF65D3E16C2B7980067C941 /* SQLiteDriver.m */,
 				EBF65D3816C2B7710067C941 /* FirstViewController.h */,
-				EBF65D3916C2B7710067C941 /* FirstViewController.m */,
+				EBF65D3916C2B7710067C941 /* FirstViewController.mm */,
 				EBF65D3A16C2B7710067C941 /* FirstViewController.xib */,
 			);
 			path = SQLite3Driver4iOS;
@@ -197,7 +197,7 @@
 			files = (
 				EBF65D2816C2AE5B0067C941 /* main.m in Sources */,
 				EBF65D2C16C2AE5B0067C941 /* AppDelegate.m in Sources */,
-				EBF65D3B16C2B7710067C941 /* FirstViewController.m in Sources */,
+				EBF65D3B16C2B7710067C941 /* FirstViewController.mm in Sources */,
 				EBF65D3F16C2B7980067C941 /* SQLiteDriver.m in Sources */,
 				EB4EE28716DCAEFB00C17774 /* SQLiteDriverCPP.cpp in Sources */,
 			);
