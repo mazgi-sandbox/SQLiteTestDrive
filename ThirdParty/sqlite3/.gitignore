@@ -2,8 +2,12 @@
 *.o
 *.pc
 *.so
+*.la
+*.lo
 *.log
 *.status
 libtool
-.deps/
+sqlite3
 Makefile
+.deps/
+.libs/
