@@ -10,10 +10,16 @@
 #import "SQLiteDriver.h"
 
 @interface FirstViewController ()
-
+- (IBAction)runButtonDidTouchUpInside:(id)sender;
 @end
 
 @implementation FirstViewController
+
+- (IBAction)runButtonDidTouchUpInside:(id)sender {
+    NSLog(@"%05d:[info]%s called.", __LINE__, __PRETTY_FUNCTION__);
+}
+
+#pragma mark - view lifecycle
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,5 +41,4 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
 @end
