@@ -9,5 +9,6 @@ LOCAL_SRC_FILES += ../../../common/SQLiteDriverCPP.cpp
 LOCAL_C_INCLUDES := $(JNI_H_INCLUDE)
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../ThirdParty/sqlite3/sqlite-amalgamation.current
 LOCAL_C_INCLUDES += $(LOCAL_PATH)/../../../common
+LOCAL_LDLIBS := -llog
 
 include $(BUILD_SHARED_LIBRARY)
