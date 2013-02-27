@@ -8,6 +8,7 @@
 
 #import "FirstViewController.h"
 #import "SQLiteDriver.h"
+#include "SQLiteDriverCPP.h"
 
 @interface FirstViewController ()
 - (IBAction)runButtonDidTouchUpInside:(id)sender;
@@ -17,6 +18,8 @@
 
 - (IBAction)runButtonDidTouchUpInside:(id)sender {
     NSLog(@"%05d:[info]%s called.", __LINE__, __PRETTY_FUNCTION__);
+    SQLiteDriverCPP *cppDriver = new SQLiteDriverCPP();
+    cppDriver->run();
 }
 
 #pragma mark - view lifecycle
