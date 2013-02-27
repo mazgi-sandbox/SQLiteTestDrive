@@ -1,0 +1,9 @@
+*.a
+*.o
+*.pc
+*.so
+*.log
+*.status
+libtool
+.deps/
+Makefile
