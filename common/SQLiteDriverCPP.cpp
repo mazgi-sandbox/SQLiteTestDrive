@@ -9,6 +9,16 @@
 #include "SQLiteDriverCPP.h"
 #include <sys/stat.h>
 
+int SQLiteDriverCPP::callback(void *not_use, int col_count, char **col_values, char **col_names)
+{
+    fprintf(stdout, "%05d:[info]in %s.\n", __LINE__, __PRETTY_FUNCTION__);
+    for (int i = 0; i < col_count; i++) {
+        fprintf(stdout, "%05d:[info]%s|%s\n", __LINE__, col_names[i], col_values[i]);
+    }
+    fprintf(stdout, "%05d:[info]out %s.\n", __LINE__, __PRETTY_FUNCTION__);
+    return 0;
+}
+
 void SQLiteDriverCPP::run(const char *db_file_path)
 {
     fprintf(stdout, "%05d:[info]in %s.\n", __LINE__, __PRETTY_FUNCTION__);
@@ -71,6 +81,20 @@ void SQLiteDriverCPP::run(const char *db_file_path)
         }
     }
     if (result_code != SQLITE_OK) goto close_and_return;
+    {
+        char *errmsg = NULL;
+        char *query = sqlite3_mprintf(DML_READ_FORMAT, TABLE_NAME, 1);
+        fprintf(stdout, "%05d:[info]%s\n", __LINE__, query);
+        result_code = sqlite3_exec(db, query, &(SQLiteDriverCPP::callback), NULL, &errmsg);
+        sqlite3_free(query);
+        if (result_code != SQLITE_OK)
+        {
+            fprintf(stderr, "%05d:[err]exec_errmsg=>%s, code=>%d, msg=>%s\n", __LINE__, errmsg, sqlite3_errcode(db), sqlite3_errmsg(db));
+            sqlite3_free(errmsg);
+            goto close_and_return;
+        }
+    }
+    if (result_code != SQLITE_OK) goto close_and_return;
     
     /*-----------------
      | update && read |
@@ -89,6 +113,20 @@ void SQLiteDriverCPP::run(const char *db_file_path)
         }
     }
     if (result_code != SQLITE_OK) goto close_and_return;
+    {
+        char *errmsg = NULL;
+        char *query = sqlite3_mprintf(DML_READ_FORMAT, TABLE_NAME, 1);
+        fprintf(stdout, "%05d:[info]%s\n", __LINE__, query);
+        result_code = sqlite3_exec(db, query, &(SQLiteDriverCPP::callback), NULL, &errmsg);
+        sqlite3_free(query);
+        if (result_code != SQLITE_OK)
+        {
+            fprintf(stderr, "%05d:[err]exec_errmsg=>%s, code=>%d, msg=>%s\n", __LINE__, errmsg, sqlite3_errcode(db), sqlite3_errmsg(db));
+            sqlite3_free(errmsg);
+            goto close_and_return;
+        }
+    }
+    if (result_code != SQLITE_OK) goto close_and_return;
     
     /*-----------------
      | delete && read |
@@ -98,6 +136,20 @@ void SQLiteDriverCPP::run(const char *db_file_path)
         char *query = sqlite3_mprintf(DML_DELETE_FORMAT, TABLE_NAME, 1);
         fprintf(stdout, "%05d:[info]%s\n", __LINE__, query);
         result_code = sqlite3_exec(db, query, NULL, NULL, &errmsg);
+        sqlite3_free(query);
+        if (result_code != SQLITE_OK)
+        {
+            fprintf(stderr, "%05d:[err]exec_errmsg=>%s, code=>%d, msg=>%s\n", __LINE__, errmsg, sqlite3_errcode(db), sqlite3_errmsg(db));
+            sqlite3_free(errmsg);
+            goto close_and_return;
+        }
+    }
+    if (result_code != SQLITE_OK) goto close_and_return;
+    {
+        char *errmsg = NULL;
+        char *query = sqlite3_mprintf(DML_READ_FORMAT, TABLE_NAME, 1);
+        fprintf(stdout, "%05d:[info]%s\n", __LINE__, query);
+        result_code = sqlite3_exec(db, query, &(SQLiteDriverCPP::callback), NULL, &errmsg);
         sqlite3_free(query);
         if (result_code != SQLITE_OK)
         {

@@ -13,6 +13,7 @@
 #include "sqlite3.h"
 
 class SQLiteDriverCPP {
+    static int callback(void *not_use, int col_count, char **col_values, char **col_names);
 public:
     void run(const char *db_file_path);
 };
