@@ -23,6 +23,14 @@ JNIEXPORT void JNICALL Java_com_mazgi_android_sqlite3driver4androidsdk_JNIBridge
 JNIEXPORT jstring JNICALL Java_com_mazgi_android_sqlite3driver4androidsdk_JNIBridge_sayHello
   (JNIEnv *, jobject, jstring);
 
+/*
+ * Class:     com_mazgi_android_sqlite3driver4androidsdk_JNIBridge
+ * Method:    callSQLite3Driver
+ * Signature: (Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_com_mazgi_android_sqlite3driver4androidsdk_JNIBridge_callSQLite3Driver
+  (JNIEnv *, jobject, jstring);
+
 #ifdef __cplusplus
 }
 #endif

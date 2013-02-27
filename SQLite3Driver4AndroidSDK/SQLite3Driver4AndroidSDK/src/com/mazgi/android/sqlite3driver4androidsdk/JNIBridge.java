@@ -11,7 +11,10 @@ public class JNIBridge {
 		doNothing();
 		Log.i("SQLite3DriverAndroidSDK", "running sayHello.");
 		Log.i("SQLite3Driver4AndroidSDK", sayHello("from Java"));
+		Log.i("SQLite3DriverAndroidSDK", "running callSQLite3Driver.");
+		callSQLite3Driver("path");
 	}
 	private native void doNothing();
 	private native String sayHello(String msg);
+	private native void callSQLite3Driver(String path);
 }
