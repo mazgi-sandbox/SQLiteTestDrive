@@ -19,6 +19,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				Log.i("SQLite3Driver4Android", "runButton.onClick");
 				JNIBridge bridge = new JNIBridge();
+				bridge.setFilesDir(getFilesDir());
 				bridge.run();
 			}
 		});
