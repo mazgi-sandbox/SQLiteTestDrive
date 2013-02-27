@@ -20,11 +20,30 @@ static NSString const * DB_FILE_NAME = @"sample.sqlite3";
 
 - (IBAction)runButtonDidTouchUpInside:(id)sender {
     NSLog(@"%05d:[info]in %s", __LINE__, __PRETTY_FUNCTION__);
+    
+    // get db file path.
     NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *path = [NSString stringWithFormat:@"%@/%@", documentDirectory, DB_FILE_NAME];
     NSLog(@"%05d:[info]SQLite3 database file path=>%@", __LINE__, path);
+    // delete db file if exist.
+    NSError *error = nil;
+    if ([[NSFileManager defaultManager]fileExistsAtPath:path]) {
+        NSLog(@"%05d:[info]Old database file is exist. deleting...", __LINE__);
+        [[NSFileManager defaultManager]removeItemAtPath:path error:&error];
+        if (error) {
+            NSLog(
+                  @"%05d:[err]Cannot delete old database file."
+                  "\npath=>%@"
+                  "\nerror=>%@",
+                  __LINE__, path, error);
+            return;
+        }
+    }
+    
+    // create && run sqlite3 driver(c++).
     SQLiteDriverCPP *cppDriver = new SQLiteDriverCPP();
     cppDriver->run([path cStringUsingEncoding:NSUTF8StringEncoding]);
+    
     NSLog(@"%05d:[info]out %s", __LINE__, __PRETTY_FUNCTION__);
 }
 

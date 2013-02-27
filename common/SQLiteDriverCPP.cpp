@@ -11,33 +11,23 @@
 
 void SQLiteDriverCPP::run(const char *db_file_path)
 {
+    fprintf(stdout, "%05d:[info]in %s.\n", __LINE__, __PRETTY_FUNCTION__);
+    
     const char *TABLE_NAME = "SAMPLE_TABLE";
     const char *DDL_TABLE_CREATE_FORMAT =
     "CREATE TABLE %s("
     "ID INTEGER PRIMARY KEY,"
     "MESSAGE TEXT"
     ");";
-    const char *DML_CREATE_FORMAT = "INSERT INTO %s VALUES(%Q, %Q);";
+    const char *DML_CREATE_FORMAT = "INSERT INTO %s VALUES(%d, %Q);";
     const char *DML_CREATE_PREPARE_FORMAT = "INSERT INTO %s VALUES(?, ?);";
-    const char *DML_READ_FORMAT = "SELECT ID, MESSAGE FROM %s WHERE ID=%Q;";
+    const char *DML_READ_FORMAT = "SELECT ID, MESSAGE FROM %s WHERE ID=%d;";
     const char *DML_READ_PREPARE_FORMAT = "SELECT ID, MESSAGE FROM %s WHERE ID=?;";
-    const char *DML_UPDATE_FORMAT = "UPDATE %s SET MESSAGE=%Q WHERE ID=%Q;";
-    const char *DML_DELETE_FORMAT = "DELETE FROM %s WHERE ID=%Q;";
+    const char *DML_UPDATE_FORMAT = "UPDATE %s SET MESSAGE=%Q WHERE ID=%d;";
+    const char *DML_DELETE_FORMAT = "DELETE FROM %s WHERE ID=%d;";
     
     int result_code = SQLITE_OK;
     sqlite3 *db = NULL;
-    
-    //既存ファイル削除
-    struct stat st;
-    if (stat(db_file_path, &st)) {
-        if (remove(db_file_path))
-        {
-            fprintf(stdout, "%05d:[info]Delete %s.\n", __LINE__, db_file_path);
-        } else {
-            fprintf(stderr, "%05d:[err]Cannot delete %s.\n", __LINE__, db_file_path);
-            return;
-        }
-    }
     
     /*-------
      | open |
@@ -58,7 +48,7 @@ void SQLiteDriverCPP::run(const char *db_file_path)
         sqlite3_free(query);
         if (result_code != SQLITE_OK)
         {
-            fprintf(stderr, "%05d:[err]errmsg=>%s, code=>%d, msg=>%s\n", __LINE__, errmsg, sqlite3_errcode(db), sqlite3_errmsg(db));
+            fprintf(stderr, "%05d:[err]exec_errmsg=>%s, code=>%d, msg=>%s\n", __LINE__, errmsg, sqlite3_errcode(db), sqlite3_errmsg(db));
             sqlite3_free(errmsg);
             goto close_and_return;
         }
@@ -67,16 +57,55 @@ void SQLiteDriverCPP::run(const char *db_file_path)
     /*-----------------
      | create && read |
      -----------------*/
+    {
+        char *errmsg = NULL;
+        char *query = sqlite3_mprintf(DML_CREATE_FORMAT, TABLE_NAME, 1, "insert");
+        fprintf(stdout, "%05d:[info]%s\n", __LINE__, query);
+        result_code = sqlite3_exec(db, query, NULL, NULL, &errmsg);
+        sqlite3_free(query);
+        if (result_code != SQLITE_OK)
+        {
+            fprintf(stderr, "%05d:[err]exec_errmsg=>%s, code=>%d, msg=>%s\n", __LINE__, errmsg, sqlite3_errcode(db), sqlite3_errmsg(db));
+            sqlite3_free(errmsg);
+            goto close_and_return;
+        }
+    }
     if (result_code != SQLITE_OK) goto close_and_return;
     
     /*-----------------
      | update && read |
      -----------------*/
+    {
+        char *errmsg = NULL;
+        char *query = sqlite3_mprintf(DML_UPDATE_FORMAT, TABLE_NAME, "update", 1);
+        fprintf(stdout, "%05d:[info]%s\n", __LINE__, query);
+        result_code = sqlite3_exec(db, query, NULL, NULL, &errmsg);
+        sqlite3_free(query);
+        if (result_code != SQLITE_OK)
+        {
+            fprintf(stderr, "%05d:[err]exec_errmsg=>%s, code=>%d, msg=>%s\n", __LINE__, errmsg, sqlite3_errcode(db), sqlite3_errmsg(db));
+            sqlite3_free(errmsg);
+            goto close_and_return;
+        }
+    }
     if (result_code != SQLITE_OK) goto close_and_return;
     
     /*-----------------
      | delete && read |
      -----------------*/
+    {
+        char *errmsg = NULL;
+        char *query = sqlite3_mprintf(DML_DELETE_FORMAT, TABLE_NAME, 1);
+        fprintf(stdout, "%05d:[info]%s\n", __LINE__, query);
+        result_code = sqlite3_exec(db, query, NULL, NULL, &errmsg);
+        sqlite3_free(query);
+        if (result_code != SQLITE_OK)
+        {
+            fprintf(stderr, "%05d:[err]exec_errmsg=>%s, code=>%d, msg=>%s\n", __LINE__, errmsg, sqlite3_errcode(db), sqlite3_errmsg(db));
+            sqlite3_free(errmsg);
+            goto close_and_return;
+        }
+    }
     if (result_code != SQLITE_OK) goto close_and_return;
 
 close_and_return:
@@ -85,4 +114,6 @@ close_and_return:
         fprintf(stderr, "%05d:[err]code=>%d, msg=>%s\n", __LINE__, sqlite3_errcode(db), sqlite3_errmsg(db));
     }
     sqlite3_close(db);
+    
+    fprintf(stdout, "%05d:[info]out %s.\n", __LINE__, __PRETTY_FUNCTION__);
 }
