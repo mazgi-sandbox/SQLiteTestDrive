@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">SQLite3Driver4AndroidSDK</string>
-    <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
+    <string name="run_button_text">run</string>
 
 </resources>
