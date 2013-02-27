@@ -16,6 +16,8 @@ int SQLiteDriverCPP::callback(void *not_use, int col_count, char **col_values, c
         fprintf(stdout, "%05d:[info]%s|%s\n", __LINE__, col_names[i], col_values[i]);
     }
     fprintf(stdout, "%05d:[info]out %s.\n", __LINE__, __PRETTY_FUNCTION__);
+    
+    //If an sqlite3_exec() callback returns non-zero, the sqlite3_exec() routine returns SQLITE_ABORT without invoking the callback again and without running any subsequent SQL statements.
     return 0;
 }
 
