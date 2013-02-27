@@ -10,6 +10,8 @@
 #import "SQLiteDriver.h"
 #include "SQLiteDriverCPP.h"
 
+static NSString const * DB_FILE_NAME = @"sample.sqlite3";
+
 @interface FirstViewController ()
 - (IBAction)runButtonDidTouchUpInside:(id)sender;
 @end
@@ -17,9 +19,13 @@
 @implementation FirstViewController
 
 - (IBAction)runButtonDidTouchUpInside:(id)sender {
-    NSLog(@"%05d:[info]%s called.", __LINE__, __PRETTY_FUNCTION__);
+    NSLog(@"%05d:[info]in %s", __LINE__, __PRETTY_FUNCTION__);
+    NSString *documentDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    NSString *path = [NSString stringWithFormat:@"%@/%@", documentDirectory, DB_FILE_NAME];
+    NSLog(@"%05d:[info]SQLite3 database file path=>%@", __LINE__, path);
     SQLiteDriverCPP *cppDriver = new SQLiteDriverCPP();
-    cppDriver->run();
+    cppDriver->run([path cStringUsingEncoding:NSUTF8StringEncoding]);
+    NSLog(@"%05d:[info]out %s", __LINE__, __PRETTY_FUNCTION__);
 }
 
 #pragma mark - view lifecycle

@@ -14,7 +14,7 @@
 
 class SQLiteDriverCPP {
 public:
-    void run();
+    void run(const char *db_file_path);
 };
 
 #endif /* defined(__SQLite3Driver4iOS__SQLiteDriverCPP__) */
