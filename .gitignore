@@ -12,6 +12,8 @@
 .metadata/*
 !.metadata/version.ini
 !.metadata/.mylyn/
+.metadata/.mylyn/.tasks.xml.zip
+.metadata/.mylyn/tasks.xml.zip
 #--------
 # eclipse projects
 .classpath
