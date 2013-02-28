@@ -13,9 +13,17 @@
 #include "sqlite3.h"
 
 class SQLiteDriverCPP {
-    static int callback(void *not_use, int col_count, char **col_values, char **col_names);
+    static int callback(void *self, int col_count, char **col_values, char **col_names);
 public:
     void run(const char *db_file_path);
+    sqlite3* open_database(const char *db_file_path);
+    bool create_table(sqlite3 *db);
+    bool create_record(sqlite3 *db);
+    bool read_record(sqlite3 *db);
+    bool update_record(sqlite3 *db);
+    bool delete_record(sqlite3 *db);
+private:
+    void printCells(int col_count, char **col_values, char **col_names);
 };
 
 #endif /* defined(__SQLite3Driver4iOS__SQLiteDriverCPP__) */
