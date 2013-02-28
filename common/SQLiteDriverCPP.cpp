@@ -118,7 +118,7 @@ bool SQLiteDriverCPP::read_record(sqlite3 *db)
     char *errmsg = NULL;
     char *query = sqlite3_mprintf(DML_READ_FORMAT, TABLE_NAME, 1);
     fprintf(stdout, "%05d:[info]%s\n", __LINE__, query);
-    result_code = sqlite3_exec(db, query, &(SQLiteDriverCPP::callback), NULL, &errmsg);
+    result_code = sqlite3_exec(db, query, &(SQLiteDriverCPP::callback), this, &errmsg);
     sqlite3_free(query);
     if (result_code != SQLITE_OK)
     {
